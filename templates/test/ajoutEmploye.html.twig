@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    <h1>ajouter un nouvel employé</h1>
+
+    {{ form_start(employesForm) }}
+        {{ form_widget(employesForm) }}
+
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    {{ form_end(employesForm) }}
+
+{% endblock %}

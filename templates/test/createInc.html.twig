@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{#{% block title %}ajouter un employe {{ controller_name }}!{% endblock %}#}
+
+{% block body %}
+
+    <h1>Incidents creation</h1>
+
+    {{ form_start(incidentsForm) }}
+        {{ form_widget(incidentsForm) }}
+
+        <button type="submit" class="btn btn-primary">create</button>
+    {{ form_end(incidentsForm) }}
+
+{% endblock %}

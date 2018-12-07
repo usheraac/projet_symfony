@@ -27,7 +27,7 @@ class EmployesForm extends AbstractType
             ->add('departement')
             ->add('fonction')
             ->add('telephone')
-            ->add('Email')
+            ->add('email')
             ->add('password', PasswordType::class)
             ->add('confirm_password', PasswordType::class)
 

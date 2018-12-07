@@ -3,11 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EmployesRepository")
  */
-class Employes
+class Employes implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -52,10 +55,14 @@ class Employes
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=true)
+     * @ORM\Column(type="string", length=500)
+     * @Assert\Length(min="8", minMessage="Votre mot de passe doit faire minimun 8 caractères")
      */
     private $password;
 
+    /**
+     * @Assert\EqualTo(propertyPath ="password", message="Vous n'avez pas saisi le même mot de passe")
+     */
     public $confirm_password;
 
 
@@ -149,14 +156,29 @@ class Employes
     }
     public function getPassword(): ?string
     {
-        return $this->email;
+        return $this->password;
     }
 
-    public function setPassword(?string $email): self
+    public function setPassword(?string $password): self
     {
-        $this->email = $email;
+        $this->password = $password;
 
         return $this;
+    }
+
+    public function eraseCredentials(){}
+
+    public function getSalt(){}
+
+    public function getRoles()
+    {
+        // TODO: Implement getRoles() method.
+        return['ROLE_USER'];
+    }
+
+    public function getUsername()
+    {
+        // TODO: Implement getUsername() method.
     }
 
 }

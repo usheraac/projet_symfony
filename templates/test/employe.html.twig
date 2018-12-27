@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+   <div class="text-primary">
+       <h1> Liste des employés  </h1>
+   </div>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Identifiant</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Age</th>
+            <th scope="col">Departement</th>
+            <th scope="col">Fonction</th>
+            <th scope="col">Telephone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Action</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for var in employe %}
+
+            {% if (var.getId() % 2)==0 %}
+
+                <tr class="table-primary">
+                <th scope="row">{{ var.getId()}}</th>
+                <td>{{ var.getNom()}}</td>
+                <td>{{ var.getPrenom()}}</td>
+                <td>{{ var.getAge()}}</td>
+                <td>{{ var.getDepartement()}}</td>
+                <td>{{ var.getFonction()}}</td>
+                <td>{{ var.getTelephone()}}</td>
+                <td>{{ var.getEmail()}}</td>
+                </tr>
+
+            {%  else %}
+                <tr class="default">
+                    <th scope="row">{{ var.getId()}}</th>
+                    <td>{{ var.getNom()}}</td>
+                    <td>{{ var.getPrenom()}}</td>
+                    <td>{{ var.getAge()}}</td>
+                    <td>{{ var.getDepartement()}}</td>
+                    <td>{{ var.getFonction()}}</td>
+                    <td>{{ var.getTelephone()}}</td>
+                    <td>{{ var.getEmail()}}</td>
+                </tr>
+        {% endif %}
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}

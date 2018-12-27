@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="jumbotron">
+        <h1 class="display-3"> A propos de Idesk</h1>
+        <p class="lead"> IDesk est une application qui permet la gestion des  incidents dans une entreprise</p>
+        <hr class="my-4">
+        <p> <h2> Gestionnaire des employés </h2>L’employé est défini par son nom, prénom, département, téléphone, adresse email, fonction.
+            Un employé peut créer un ou plusieurs incidents. il doit pouvoir faire des créations, modifications et suppression de tâches.
+        </p>
+
+        <p> <h2> Gestionnaire d'incidents </h2>  L’incident est caractérisé par son numéro (ID), sa date de création, titre, catégories, statut,
+        le deadline, le niveau de priorité, l’employé en charge. Un incident est assigné à un seul employé et qui pourra y apporte des modifiactions et mise à jour en fonction de l'évolution.
+
+        </p>
+
+        <p> <h2> Espace d'administration </h2>  un administrateur qui peut être un employé, doit pouvoir distribuer/ assigner et faire le suivi des incidents,
+        créer de nouveaux employés. Il est doté d'attributs et privilège plus important que celui d'un employé.
+
+
+        </p>
+
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        </p>
+    </div>
+
+{% endblock %}

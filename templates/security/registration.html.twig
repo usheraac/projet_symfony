@@ -4,8 +4,17 @@
     <h1>Enregistrer un nouveau compte employé</h1>
 
     {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button type="submit" class="btn btn-success"> Enregistrer </button>
+    <div class="form-row border border-primary jumbotron" >
+        <div class="form-group col-md-10">
+            <div class="well">
+                <fieldset>
+                    {{ form_widget(form) }}
+                </fieldset>
+
+    <button type="submit" class="btn btn-primary"> Enregistrer </button>
+            </div>
+        </div>
+    </div>
     {{ form_end(form) }}
 
 {% endblock %}

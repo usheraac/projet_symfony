@@ -102,24 +102,24 @@ class Incidents
         return $this;
     }
 
-    public function getDateCreation(): ?\DateTimeInterface
+    public function getDate_creation(): ?\DateTimeInterface
     {
         return $this->date_creation;
     }
 
-    public function setDateCreation(\DateTimeInterface $date_creation): self
+    public function setDate_creation(\DateTimeInterface $date_creation): self
     {
         $this->date_creation = $date_creation;
 
         return $this;
     }
 
-    public function getDateEnd(): ?\DateTimeInterface
+    public function getDate_end(): ?\DateTimeInterface
     {
         return $this->date_end;
     }
 
-    public function setDateEnd(?\DateTimeInterface $date_end): self
+    public function setDate_end(?\DateTimeInterface $date_end): self
     {
         $this->date_end = $date_end;
 

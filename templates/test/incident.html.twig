@@ -1,5 +1,66 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    Affichons les incidents
 
+    <div class="text-dark">
+        <h1> Liste des Incidents  </h1>
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Identifiant</th>
+            <th scope="col">Objet</th>
+            <th scope="col">Description</th>
+            <th scope="col">Service</th>
+            <th scope="col">Date</th>
+            <th scope="col">DateTarget</th>
+            <th scope="col">Status</th>
+            <th scope="col">Discussion</th>
+            <th scope="col">Employé</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for var in incident %}
+
+            {% if (var.getId() % 2)==0 %}
+
+                <tr class="table-primary">
+                    <th scope="row">{{ var.getId()}}</th>
+                    <td>{{ var.getObjet()}}</td>
+                    <td>{{ var.getDescription()}}</td>
+                    <td>{{ var.getService()}}</td>
+                    <td>#</td>
+                    <td>#</td>
+                    <td>{{ var.getStatus()}}</td>
+                    <td>{{ var.getDiscussion()}}</td>
+                    <td>{{ var.getEmploye()}}</td>
+                    <td><a href="http://localhost:8000/editI/{{ var.getId()}}"> <button type="button" class="btn btn-success">Editer</button></a></td>
+                    <td><a href="http://localhost:8000/deleteI/{{ var.getId()}}"> <button type="button" class="btn btn-danger">Delete</button></a></td>
+
+
+
+                </tr>
+
+            {%  else %}
+                <tr class="default">
+                    <th scope="row">{{ var.getId()}}</th>
+                    <td>{{ var.getObjet()}}</td>
+                    <td>{{ var.getDescription()}}</td>
+                    <td>{{ var.getService()}}</td>
+                    <td>#</td>
+                    <td>#</td>
+                    <td>{{ var.getStatus()}}</td>
+                    <td>{{ var.getDiscussion()}}</td>
+                    <td>{{ var.getEmploye()}}</td>
+                    <td><a href="http://localhost:8000/editI/{{ var.getId()}}"> <button type="button" class="btn btn-success">Editer</button></a></td>
+                    <td><a href="http://localhost:8000/deleteI/{{ var.getId()}}"> <button type="button" class="btn btn-danger">Delete</button></a></td>
+
+                </tr>
+            {% endif %}
+        {% endfor %}
+
+        </tbody>
+        <td><a href="http://localhost:8000/inscription" > <button type="button" class="btn btn-primary">Nouvel Incident</button></a></td>
+    </table>
 {% endblock %}

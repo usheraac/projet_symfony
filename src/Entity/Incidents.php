@@ -33,21 +33,22 @@ class Incidents
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $service;
+        private $service;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $date_creation;
+    private $date;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $date_end;
+    private $dateTarget;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
      */
+
     private $status;
 
     /**
@@ -102,26 +103,26 @@ class Incidents
         return $this;
     }
 
-    public function getDate_creation(): ?\DateTimeInterface
+    public function getDate(): ?\DateTimeInterface
     {
-        return $this->date_creation;
+        return $this-> date;
     }
 
-    public function setDate_creation(\DateTimeInterface $date_creation): self
+    public function setDate(\DateTimeInterface $date): self
     {
-        $this->date_creation = $date_creation;
+        $this->date = $date;
 
         return $this;
     }
 
-    public function getDate_end(): ?\DateTimeInterface
+    public function getDateTarget(): ?\DateTimeInterface
     {
-        return $this->date_end;
+        return $this->dateTarget;
     }
 
-    public function setDate_end(?\DateTimeInterface $date_end): self
+    public function setDateTarget(?\DateTimeInterface $dateTarget): self
     {
-        $this->date_end = $date_end;
+        $this->dateTarget = $dateTarget;
 
         return $this;
     }
@@ -152,12 +153,12 @@ class Incidents
 
     public function getEmploye(): ?string
     {
-        return $this->nom;
+        return $this->employe;
     }
 
-    public function setEmploye(string $nom): self
+    public function setEmploye(string $employe): self
     {
-        $this->nom = $nom;
+        $this->employe = $employe;
 
         return $this;
     }

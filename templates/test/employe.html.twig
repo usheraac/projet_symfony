@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 
-   <div class="text-primary">
+   <div class="text-dark">
        <h1> Liste des employés  </h1>
    </div>
 
@@ -34,6 +34,11 @@
                 <td>{{ var.getFonction()}}</td>
                 <td>{{ var.getTelephone()}}</td>
                 <td>{{ var.getEmail()}}</td>
+                    <td><a href="http://localhost:8000/editE/{{ var.getId()}}"> <button type="button" class="btn btn-success">Editer</button></a></td>
+                    <td><a href="http://localhost:8000/deleteE/{{ var.getId()}}"> <button type="button" class="btn btn-danger">Delete</button></a></td>
+
+
+
                 </tr>
 
             {%  else %}
@@ -46,10 +51,15 @@
                     <td>{{ var.getFonction()}}</td>
                     <td>{{ var.getTelephone()}}</td>
                     <td>{{ var.getEmail()}}</td>
+                    <td><a href="http://localhost:8000/editE/{{ var.getId()}}" > <button type="button" class="btn btn-success">Editer</button></a></td>
+                    <td><a href="http://localhost:8000/deleteE/{{ var.getId()}}"> <button type="button" class="btn btn-danger">Delete</button></a></td>
+
+
                 </tr>
         {% endif %}
         {% endfor %}
 
         </tbody>
+        <td><a href="http://localhost:8000/inscription" > <button type="button" class="btn btn-primary">Nouvel Employé</button></a></td>
     </table>
 {% endblock %}

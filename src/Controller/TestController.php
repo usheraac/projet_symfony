@@ -30,7 +30,12 @@ class TestController extends AbstractController
      * @Route("/incident", name="incident")
      */
     public function incident(){
-        return $this-> render('test/incident.html.twig');
+        $incident = $this->getDoctrine()
+            ->getRepository(Incidents::class)
+            ->findAll();
+        return $this-> render('test/incident.html.twig', [
+            'incident' => $incident,
+        ]);
     }
 
     /**
@@ -38,7 +43,7 @@ class TestController extends AbstractController
      */
     public function employe(){
         $employe = $this->getDoctrine()
-            ->getRepository(Employes::class)
+            ->getRepository(Employes::class) /* recupération des données en base de données sous forme de reposotory*/
             ->findAll();
         return $this-> render('test/employe.html.twig', [
             'employe' => $employe,
@@ -54,11 +59,15 @@ class TestController extends AbstractController
 
     /**
      * @Route("/createIncident", name ="new_incident")
+     * @Route("/editI/{id}", name ="incident_edit")
      */
 
-    public function createIncident(Request $request, ObjectManager $manager)
+    public function createIncident(Incidents $incident = null, Request $request, ObjectManager $manager)
     {
-        $incident = new Incidents();
+        if(!$incident){
+            $incident = new Incidents();
+        }
+
 
         $form = $this->createForm(IncidentsForm::class, $incident);
         $form-> handleRequest($request);
@@ -67,28 +76,38 @@ class TestController extends AbstractController
             $manager->persist($incident);
             $manager->flush();
 
-            return $this->redirectToRoute('test/incident.html.twig');
+            return $this->redirectToRoute('security_login');
         }
 
-        return $this->render('test/incident.html.twig', [
-            'incidentsForm' => $form->createView()
+        return $this->render('test/createInc.html.twig', [
+            'incidentsForm' => $form->createView(),
+            'editMode' => $incident -> getId() !== null
         ]);
     }
-
 
     /**
-     * @Route("/ajoutEmploye")
-
-    public function index()
+     * @Route("/deleteI/{id}", name="employe_delete")
+     */
+    public function delete(Incidents $this_incident , ObjectManager $manager)
     {
 
-        $form = $this->createForm(EmployesForm::class);
+        $manager->remove($this_incident);  /*suppression de l'employé  */
+        $manager->flush();
 
-        return $this->render('test/ajoutEmploye.html.twig', [
-            'employesForm' => $form->createView()
+        $incident = $this->getDoctrine()
+            ->getRepository(Incidents::class)
+            ->findAll();
+        return $this-> render('test/incident.html.twig', [
+            'incident' => $incident,
         ]);
+
+
     }
-     */
+
+
+
+
+
 
 
 

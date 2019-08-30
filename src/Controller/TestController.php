@@ -20,14 +20,15 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 class TestController extends AbstractController
 {
 
-/*
+    /**
+     * @Route( "/", name="home")
+     */
     public function home(){
         return $this-> render('test/home.html.twig');
-    }*/
+    }
 
 
     /**
-     * @Route("/", name="incident")
      * @Route("/incident", name="incident")
      */
     public function incident(){
